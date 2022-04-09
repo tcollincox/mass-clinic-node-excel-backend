@@ -20,7 +20,7 @@ module.exports ={
         Object.keys(data).forEach(key =>{
             if(key.includes("Number Achieved")){
                 let singleData = {
-                    'RecordedYear': key.split(' ')[2],
+                    'RecordedYear': parseInt(key.split(' ')[2]),
                     'PatientAmount': data[key]
                 };
                 dataArray.push(singleData);
@@ -30,11 +30,13 @@ module.exports ={
     },
     mergeToOne: function (dataArray, extraLabels, objectLabel){
         let newDataArray = dataArray;
+        let returingDataArray = [];
         for(let i = 0; i < dataArray.length; i++){
            for(let j = 0; j < dataArray[i].length; j++){
                newDataArray[i][j][objectLabel] = extraLabels[i];
+               returingDataArray.push(newDataArray[i][j]);
            }
         }
-        return newDataArray;
+        return returingDataArray;
     }
 }

@@ -9,6 +9,7 @@ router.post('/', async function(req,res){
     const data = req.body;
     dataArray.push(data);
     let newDataArray = [];
+    res.send(dataArray[0]);
     dataArray[0].data.forEach(data => {
         if('Patient Arrival on Time' in data){
             let dataObject =convert.convertToDataBase(data);
@@ -19,7 +20,6 @@ router.post('/', async function(req,res){
         where: {},
         truncate: true
     });
-    console.log(newDataArray);
     arrivalTime.bulkCreate(newDataArray)
 });
 

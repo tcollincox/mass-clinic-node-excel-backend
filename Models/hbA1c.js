@@ -1,20 +1,11 @@
 const sequelize = require('sequelize');
 const db = require('../config/database');
 
-const patients = db.define('bloodA1C', {
-	TimePeriod:{
+const patients = db.define('hbA1c', {
+	LevelOfControl:{
 		type: sequelize.STRING
 	},
-	NumDom:{
-		type: sequelize.STRING
-	},
-	TotalPercent:{
-		type: sequelize.FLOAT
-	},
-	PatientAmountSpecifc:{
-		type: sequelize.INTEGER
-	},
-	PatientAmountTotal:{
+	PatientAmount:{
 		type: sequelize.INTEGER
 	},
 }, {

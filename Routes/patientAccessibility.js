@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 let convert = require('../Converting/patientAccessibility');
+const patientAccessibility = require('../Models/patientAccessibility');
+
 
 const dataArray = [];
 
-router.post('/', (req,res) => {
+router.post('/', async function (req,res){
     const data = req.body;
     dataArray.push(data);
     res.send(dataArray[0]);
@@ -14,6 +16,11 @@ router.post('/', (req,res) => {
         let dataObject =convert.convertToDataBase(data);
         newDataArray.push(dataObject);
     });
+    patientAccessibility.destroy({
+        where: {},
+        truncate: true
+    });
+    patientAccessibility.bulkCreate(newDataArray);
 });
 
 module.exports = router;

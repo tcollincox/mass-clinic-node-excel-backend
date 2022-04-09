@@ -12,7 +12,9 @@ const applications = db.define('PatientApplicationComplete', {
         type: sequelize.INTEGER
     }
 }, {
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
 });
+applications.removeAttribute('id');
 
 module.exports = applications;

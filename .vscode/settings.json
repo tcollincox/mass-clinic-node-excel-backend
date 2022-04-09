@@ -1,0 +1,4 @@
+{
+    "appService.deploySubpath": ".",
+    "appService.defaultWebAppToDeploy": "/subscriptions/5018bdc6-4bac-4e12-ab1e-1bb4bf5fe143/resourceGroups/mass-clinic-upload-backend-rg/providers/Microsoft.Web/sites/mass-clinic-upload-backend"
+}

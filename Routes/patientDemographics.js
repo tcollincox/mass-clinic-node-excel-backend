@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 let convert = require('../Converting/patientDemographics.js');
+const demographics = require('../Models/demographics');
 
 const dataArray = [];
 
-router.post('/', (req,res) => {
+router.post('/', async function (req,res){
     const data = req.body;
     dataArray.push(data);
     res.send(dataArray[0]);
@@ -16,6 +17,11 @@ router.post('/', (req,res) => {
             newDataArray.push(data);
         });
     });
+    demographics.destroy({
+        where: {},
+        truncate: true
+    });
+    demographics.bulkCreate(newDataArray);
 });
 
 module.exports = router;

@@ -4,15 +4,15 @@
  * Module dependencies.
  */
 
-var app = require('../index.js');
-var debug = require('debug')('mass-clinic-dashboard:server');
+var app = require('../app');
+var debug = require('debug')('mass-clinic-upload-backend:server');
 var http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3002');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
